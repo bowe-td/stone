@@ -6,7 +6,11 @@ node(label) {
     checkout scm
   }
 
+  stage("remove old containers") {
+    sh "docker rm -f ${container_name} || true"
+  }
+
   stage("UP stone repository") {
-    sh "docker run -dit --name stone-temp -p 1000:80 -v \"$PWD\":/usr/local/apache2/htdocs httpd:2.4"
+    sh "docker run -dit --name ${container_name} -p 1000:80 -v ./:/usr/local/apache2/htdocs httpd:2.4"
   }
 }
