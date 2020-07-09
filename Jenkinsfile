@@ -12,5 +12,6 @@ node(label) {
 
   stage("UP stone repository") {
     sh "ls"
+    sh "echo $PWD"
   }
 }
