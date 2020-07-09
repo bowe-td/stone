@@ -11,7 +11,6 @@ node(label) {
   }
 
   stage("UP stone repository") {
-    sh "ls"
-    sh "echo $PWD"
+    sh "docker run -dit --name ${container_name} -p 1000:80 -v $(PWD):/usr/local/apache2/htdocs httpd:2.4"
   }
 }
